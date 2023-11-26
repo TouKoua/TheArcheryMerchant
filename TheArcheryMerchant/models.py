@@ -1,9 +1,9 @@
 import django.db.models as models
 
 class Bow(models.Model):
-    types = {"LongBow", "CompoundBow"}
+    types = (("LongBow", "LongBow"), ("CompoundBow", "CompoundBow"), ("RecurveBow", "RecurveBow"))
     name = models.CharField(max_length=100)
-    bowtype = models.TextChoices(object=types)
+    bowtype = models.CharField(max_length=100, choices=types)
     drawLength = models.IntegerField(default=0)
     drawStrength = models.IntegerField(default=0)
 
