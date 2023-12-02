@@ -1,0 +1,15 @@
+{% extends "pageBase.html" %}
+{% load static %}
+{% block stylesheet %}
+  <link href="{% static 'home.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block app_block %}
+<div class="container">
+  <form action="/" method="POST">
+    {{ form }}
+    <button type="submit" class="btn btn-secondary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

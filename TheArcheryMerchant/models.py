@@ -6,7 +6,9 @@ class Bow(models.Model):
     bowtype = models.CharField(max_length=100, choices=types)
     drawLength = models.IntegerField(default=0)
     drawStrength = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)
 
 class Arrows(models.Model):
     arrowLength = models.IntegerField(default=0)
     spinage = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)

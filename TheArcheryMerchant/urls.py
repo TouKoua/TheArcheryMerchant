@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from TheArcheryMerchant.views.home import Home
+from TheArcheryMerchant.views.selectionPage import selectionPage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', Home.as_view(), name="Home"),
+    path('selectionpage/<str:itemname>/', selectionPage.as_view(), name="Selection")
 ]

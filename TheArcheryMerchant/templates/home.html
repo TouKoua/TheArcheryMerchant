@@ -1,27 +1,25 @@
+{% extends "pageBase.html" %}
 {% load static %}
-<html>
-    <head>
-        {% load bootstrap5 %}
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-              <a class="navbar-brand" href="#">
-                <h1>The Archery Merchant</h1>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link link-light" href="{% url 'Home' %}">HOME</a>
-                  </li>
-                  <!-- Add more navigation links here -->
-                </ul>
-              </div>
-            </div>
-        </nav>
-    </body>
-</html>
+{% block stylesheet %}
+  <link href="{% static 'home.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block app_block %}
+<div class="container">
+  <h2>Bow</h2>
+  <a href="{% url 'Selection' itemname='Bow' %}">
+    <div class="container-md">
+      100% wide until medium breakpoint
+    </div>
+  </a>
+</div>
+<div class="container">
+  <h2>Arrow</h2>
+  <a href="{% url 'Selection' itemname='Arrow' %}">
+    <div class="container-md">
+      100% wide until medium breakpoint
+    </div>
+  </a>
+</div>
+
+{% endblock %}
