@@ -1,0 +1,13 @@
+body{
+    background-color: lightskyblue;
+}
+
+.home{
+    background-color: whitesmoke;
+    margin-top: 20px;
+    height: 80%;
+}
+
+h1{
+    text-align: center;
+}
