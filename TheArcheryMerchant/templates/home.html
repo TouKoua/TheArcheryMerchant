@@ -6,12 +6,37 @@
 
 {% block app_block %}
 <div class="container">
-  <h2>Bow</h2>
-  <a href="{% url 'Selection' itemname='Bow' %}">
-    <div class="container-md">
-      100% wide until medium breakpoint
-    </div>
-  </a>
+  <table class="table">
+    <thead>
+      <th></th>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Price</th>
+      <th>Seller</th>
+    </thead>
+    <tr>
+      <td>Bow</td>
+      {% if not bow %}
+      <td><a href="{% url 'Selection' itemname='Bow' %}"><button type="button" class="btn btn-secondary">Choose Your Bow</button></a><td>
+      {% else %}
+      <td>{{ bow.name }}</td>
+      <td>{{ bow.brand }}</td>
+      <td>{{ bow.price }}</td>
+      <td>{{ bow.seller }}</td>
+      {% endif %}
+    </tr>
+    <tr>
+      <td>Arrow</td>
+      {% if not arrow %}
+      <td><a href="{% url 'Selection' itemname='Bow' %}"><button type="button" class="btn btn-secondary">Choose Your Arrows</button></a><td>
+      {% else %}
+      <td>{{ arrow.name }}</td>
+      <td>{{ arrow.brand }}</td>
+      <td>{{ arrow.price }}</td>
+      <td>{{ arrow.seller }}</td>
+      {% endif %}
+    </tr>
+  </table>
 </div>
 <div class="container">
   <h2>Arrow</h2>
