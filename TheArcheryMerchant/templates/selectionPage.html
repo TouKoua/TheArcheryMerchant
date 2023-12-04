@@ -6,24 +6,26 @@
 
 {% block app_block %}
 <div class="container">
-  <form action="/" method="POST">
+  <form action="{% url 'Selection' itemname=itemname %}" method="POST">
     {% csrf_token %}
     {{ form }}
-    <button type="submit" class="btn btn-secondary">Submit</button>
+    <button type="submit" class="btn btn-secondary">Apply Filters</button>
   </form>
 </div>
 <div class="home container">
+  <form method="POST" action="{% url 'Home' %}">
+  {% csrf_token %}
   <table class="table">
     <thead>
       <td>Name</td>
       <td>Brand</td>
       {% if bowlist %}
-        <td>Bow Type</td>
-        <td>Draw Length</td>
-        <td>Draw Strength<td>
+      <td>Bow Type</td>
+      <td>Draw Length</td>
+      <td>Draw Strength</td>
       {% else %}
-        <td>Arrow Length</td>
-        <td>Arrow Spine</td>
+      <td>Arrow Length</td>
+      <td>Arrow Spine</td>
       {% endif %}
       <td>Price</td>
       <td>Seller</td>
@@ -34,11 +36,11 @@
         <td>{{ bow.name }}</td>
         <td>{{ bow.brand }}</td>
         <td>{{ bow.bowtype }}</td>
-        <td>{{ bow.drawLength }}</td>
-        <td>{{ bow.drawStrength }}</td>
+        <td>{{ bow.drawLength }} in.</td>
+        <td>{{ bow.drawStrength }} lbs.</td>
         <td>{{ bow.price }}</td>
-        <td>{{ bow.seller }}</td>
-        <td><button type="submit" method="POST" value={{ bow }} name="bow">Select</button></td>
+        <td>{{ bow.sellers }}</td>
+        <td><button type="submit" method="POST" value="{{ bow.name }}" name="bow">Select</button></td>
       </tr>
     {% endfor %}
   {% else %}
@@ -49,11 +51,12 @@
         <td>{{ arrow.arrowLength }}</td>
         <td>{{ arrow.spinage }}</td>
         <td>{{ arrow.price }}</td>
-        <td>{{ arrow.seller }}</td>
-        <td><button type="submit" method="POST" value={{ arrow }} name="arrow">Select</button></td>
+        <td>{{ arrow.sellers }}</td>
+        <td><button type="submit" method="POST" value='{{ arrow }}' name="arrow">Select</button></td>
       </tr>
     {% endfor %}
   {% endif %}
+  </form>
 </div>
 
 {% endblock %}

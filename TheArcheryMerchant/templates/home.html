@@ -24,6 +24,7 @@
       <td>{{ bow.brand }}</td>
       <td>{{ bow.price }}</td>
       <td>{{ bow.seller }}</td>
+      <td><a href="{% url 'Selection' itemname='Bow' %}"><button type="button" class="btn btn-secondary">Reselect Your Bow</button></a><td>
       {% endif %}
     </tr>
     <tr>
@@ -35,6 +36,7 @@
       <td>{{ arrow.brand }}</td>
       <td>{{ arrow.price }}</td>
       <td>{{ arrow.seller }}</td>
+      <td><a href="{% url 'Selection' itemname='Arrows' %}"><button type="button" class="btn btn-secondary">Reselect Your Arrows</button></a><td>
       {% endif %}
     </tr>
   </table>

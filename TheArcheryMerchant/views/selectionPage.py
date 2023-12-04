@@ -12,6 +12,8 @@ class BowForm(forms.ModelForm):
     class Meta:
         model = Bow
         fields = {"bowtype", "drawlength", "drawstrength", "price", "sellers"}
+    
+    field_order = ["bowtype", "drawlength", "drawstrength", "price", "sellers"]
 
 class ArrowForm(forms.ModelForm):
     arrowLength = forms.CharField(required=False)
@@ -21,10 +23,11 @@ class ArrowForm(forms.ModelForm):
     class Meta:
         model = Arrows
         fields={"arrowLength", "spinage", "price", "sellers"}
+    
+    field_order = ["arrowLength", "spinage", "price", "sellers"]
 
 class selectionPage(View):
     def get(self, request, itemname):
-        print(itemname)
         if(itemname == "Bow"):
             form = BowForm
             bowlist = Bow.objects.all()
@@ -33,4 +36,15 @@ class selectionPage(View):
             form = ArrowForm
             arrowlist = Arrows.objects.all()
             bowlist = []
-        return render(request, "selectionPage.html", {"form": form, "bowlist": bowlist, "arrowlist": arrowlist})
+        return render(request, "selectionPage.html", {"form": form, "bowlist": bowlist, "arrowlist": arrowlist, "itemname": itemname})
+    
+    def post(self, request, itemname):
+        if(itemname == "Bow"):
+            form = BowForm
+            bowlist = Bow.objects.all()
+            arrowlist = []
+        else:
+            form = ArrowForm
+            arrowlist = Arrows.objects.all()
+            bowlist = []
+        return render(request, "selectionPage.html", {"form": form, "bowlist": bowlist, "arrowlist": arrowlist, "itemname": itemname})
