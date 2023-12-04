@@ -29,7 +29,7 @@
     <tr>
       <td>Arrow</td>
       {% if not arrow %}
-      <td><a href="{% url 'Selection' itemname='Bow' %}"><button type="button" class="btn btn-secondary">Choose Your Arrows</button></a><td>
+      <td><a href="{% url 'Selection' itemname='Arrows' %}"><button type="button" class="btn btn-secondary">Choose Your Arrows</button></a><td>
       {% else %}
       <td>{{ arrow.name }}</td>
       <td>{{ arrow.brand }}</td>
