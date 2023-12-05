@@ -3,8 +3,8 @@ This is a Django based web application that aids users in purchasing their first
 
 # Installing the project
 To get the project locally, clone the repository into your computer.
-From there, setup your virtual environment and run the following commands: 
-pip install django 
+From there, setup your virtual environment and run the following commands:  
+pip install django  
 pip install django-bootstrap-v5
 
 # Running the project
