@@ -1,0 +1,43 @@
+{% extends "pageBase.html" %}
+{% load static %}
+{% block stylesheet %}
+  <link href="{% static 'home.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block app_block %}
+<div class="container">
+  <form action="{% url 'BowSelection' %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-secondary">Apply Filters</button>
+  </form>
+</div>
+<div class="home container">
+  <form method="POST" action="{% url 'Home' %}">
+  {% csrf_token %}
+  <table class="table">
+    <thead>
+        <td>Name</td>
+        <td>Brand</td>
+        <td>Bow Type</td>
+        <td>Draw Length</td>
+        <td>Draw Strength</td>
+        <td>Price</td>
+        <td>Seller</td>
+    </thead>
+    {% for bow in bowlist %}
+    <tr>
+        <td>{{ bow.name }}</td>
+        <td>{{ bow.brand }}</td>
+        <td>{{ bow.bowtype }}</td>
+        <td>{{ bow.drawLength }} in.</td>
+        <td>{{ bow.drawStrength }} lbs.</td>
+        <td>{{ bow.price }}</td>
+        <td>{{ bow.sellers }}</td>
+        <td><button type="submit" method="POST" value="{{ bow.name }}" name="bow">Select</button></td>
+    </tr>
+    {% endfor %}
+  </form>
+</div>
+
+{% endblock %}

@@ -18,28 +18,37 @@
     <tr>
       <td>Bow</td>
       {% if not bow %}
-      <td><a href="{% url 'Selection' itemname='Bow' %}"><button type="button" class="btn btn-secondary">Choose Your Bow</button></a><td>
+      <td><a href="{% url 'BowSelection'%}"><button type="button" class="btn btn-secondary">Choose Your Bow</button></a><td>
       {% else %}
       <td>{{ bow.name }}</td>
       <td>{{ bow.brand }}</td>
       <td>{{ bow.price }}</td>
-      <td>{{ bow.seller }}</td>
-      <td><a href="{% url 'Selection' itemname='Bow' %}"><button type="button" class="btn btn-secondary">Reselect Your Bow</button></a><td>
+      <td>{{ bow.sellers }}</td>
+      <td><a href="{% url 'BowSelection' %}"><button type="button" class="btn btn-secondary">Reselect Your Bow</button></a><td>
       {% endif %}
     </tr>
     <tr>
       <td>Arrow</td>
       {% if not arrow %}
-      <td><a href="{% url 'Selection' itemname='Arrows' %}"><button type="button" class="btn btn-secondary">Choose Your Arrows</button></a><td>
+      <td><a href="{% url 'ArrowSelection' %}"><button type="button" class="btn btn-secondary">Choose Your Arrows</button></a><td>
       {% else %}
       <td>{{ arrow.name }}</td>
       <td>{{ arrow.brand }}</td>
       <td>{{ arrow.price }}</td>
-      <td>{{ arrow.seller }}</td>
-      <td><a href="{% url 'Selection' itemname='Arrows' %}"><button type="button" class="btn btn-secondary">Reselect Your Arrows</button></a><td>
+      <td>{{ arrow.sellers }}</td>
+      <td><a href="{% url 'ArrowSelection' %}"><button type="button" class="btn btn-secondary">Reselect Your Arrows</button></a><td>
       {% endif %}
     </tr>
+    <tfoot>
+      <td>Total</td>
+      <td></td>
+      <td></td>
+      <td> {{ total }}</td>
+    </tfoot>
   </table>
+  {% for msg in errors %}
+    {{ msg }}
+  {% endfor %}
 </div>
 
 {% endblock %}

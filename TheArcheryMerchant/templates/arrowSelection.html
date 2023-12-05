@@ -6,7 +6,7 @@
 
 {% block app_block %}
 <div class="container">
-  <form action="{% url 'Selection' itemname=itemname %}" method="POST">
+  <form action="{% url 'ArrowSelection' %}" method="POST">
     {% csrf_token %}
     {{ form }}
     <button type="submit" class="btn btn-secondary">Apply Filters</button>
@@ -17,35 +17,15 @@
   {% csrf_token %}
   <table class="table">
     <thead>
-      <td>Name</td>
-      <td>Brand</td>
-      {% if bowlist %}
-      <td>Bow Type</td>
-      <td>Draw Length</td>
-      <td>Draw Strength</td>
-      {% else %}
-      <td>Arrow Length</td>
-      <td>Arrow Spine</td>
-      {% endif %}
-      <td>Price</td>
-      <td>Seller</td>
+        <td>Name</td>
+        <td>Brand</td>
+        <td>Arrow Length</td>
+        <td>Arrow Spine</td>
+        <td>Price</td>
+        <td>Seller</td>
     </thead>
-  {% if bowlist %}
-    {% for bow in bowlist %}
-      <tr>
-        <td>{{ bow.name }}</td>
-        <td>{{ bow.brand }}</td>
-        <td>{{ bow.bowtype }}</td>
-        <td>{{ bow.drawLength }} in.</td>
-        <td>{{ bow.drawStrength }} lbs.</td>
-        <td>{{ bow.price }}</td>
-        <td>{{ bow.sellers }}</td>
-        <td><button type="submit" method="POST" value="{{ bow.name }}" name="bow">Select</button></td>
-      </tr>
-    {% endfor %}
-  {% else %}
     {% for arrow in arrowlist %}
-      <tr>
+    <tr>
         <td>{{ arrow.name }}</td>
         <td>{{ arrow.brand }}</td>
         <td>{{ arrow.arrowLength }}</td>
@@ -53,9 +33,8 @@
         <td>{{ arrow.price }}</td>
         <td>{{ arrow.sellers }}</td>
         <td><button type="submit" method="POST" value='{{ arrow }}' name="arrow">Select</button></td>
-      </tr>
+    </tr>
     {% endfor %}
-  {% endif %}
   </form>
 </div>
 
